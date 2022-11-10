@@ -20,7 +20,7 @@ async function run(){
     try{
         const serviceCollection =client.db('FoodDB').collection('services');
         const reviewCollection = client.db('FoodDB').collection('reviews');
-
+//access token added
         app.post('/jwt', (req, res) =>{
             const user = req.body;
             const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d'})
