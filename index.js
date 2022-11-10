@@ -26,7 +26,7 @@ async function run(){
             const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d'})
             res.send({token})
         })
-
+//main service loaded
         app.get('/services',async(req ,res)=>{
             const page = parseInt(req.query.page);
             const size = parseInt(req.query.size);
