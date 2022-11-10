@@ -44,7 +44,7 @@ async function run(){
             const services = await cursor.limit(3).toArray()
             res.send(services)
         })
-
+//add services
         app.post('/services',async(req ,res)=>{
             const user= req.body;
             const result = await serviceCollection.insertOne(user);
