@@ -81,12 +81,32 @@ async function run() {
             res.send(result)
         })
 
-        // app.get('/reviews/:id', async(req ,res)=>{
-        //     const id = req.params.id;
-        //     const query = {_id: ObjectId(id)};
-        //     const result =await reviewCollection.findOne(query)
-        //     res.send(result)
-        // })
+        //update
+
+        app.get('/reviews/:id', async(req ,res)=>{
+            const id = req.params.id;
+            const query = {_id: ObjectId(id)};
+            const result =await reviewCollection.findOne(query)
+            res.send(result)
+        })
+
+        app.put('/reviews/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: ObjectId(id) };
+            
+             const user = req.body;
+             console.log(user);
+            const option = {upsert: true};
+            const updatedUser = {
+                $set: {
+                    review:user.review,
+                }
+            }
+            const result = await reviewCollection.updateOne(filter, updatedUser, option);
+            res.send(result);
+        })
+
+
 
 
         app.get('/reviews/:id', async (req, res) => {
