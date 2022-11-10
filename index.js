@@ -36,7 +36,8 @@ async function run(){
             const services = await cursor.skip(page*size).limit(size).toArray()
             const count = await serviceCollection.estimatedDocumentCount();
             res.send({count , services})
-        })
+        });
+        //only 3 item shows
         app.get('/services/count',async(req ,res)=>{
             const query = {}
             const cursor = serviceCollection.find(query);
